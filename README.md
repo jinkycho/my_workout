@@ -1,3 +1,9 @@
-# Getting Started with Create React App
+# 나의 운동
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+운동을 기록할 수 있는 웹사이트입니다.
+
+# Front-end
+HTML
+CSS
+Javascript
+React
