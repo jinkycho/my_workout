@@ -1,0 +1,8 @@
+.workouts-block {
+  width: 90%;
+  margin: auto;
+}
+
+.workout-block__chart {
+  position: relative;
+}

@@ -1,0 +1,44 @@
+.new-workout {
+  width: 90%;
+  margin: auto;
+  padding: 5%;
+  position: relative;
+}
+
+.new-workout__cancel {
+  background: #fff;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.new-workout__control {
+  padding: 2% 0;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin: 0.5rem 0 0;
+  font-weight: bold;
+}
+
+input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 90%;
+  margin: 0 auto 1rem;
+}
+
+input:focus,
+input:active {
+  border-color: #333;
+}
+
+.new-workout__submit {
+  width: 100%;
+}

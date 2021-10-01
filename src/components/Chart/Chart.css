@@ -1,0 +1,18 @@
+.chart {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  height: 10rem;
+  position: relative;
+}
+
+/* .chart::after {
+  content: "";
+  display: block;
+  width: 100%;
+  background: #333;
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+} */
