@@ -9,6 +9,7 @@ function WorkoutItem(props) {
 
     const item = props.item;
 
+
     const StyledWorkoutItem = styled.li`
         background: #333;
         color: #fff;

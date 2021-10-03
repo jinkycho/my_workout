@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import Button from '../UI/Button';
 import Card from '../UI/Card';
 import './WorkoutForm.css';
+import TimePicker from '../TimePicker/TimePicker';
 
 function WorkoutForm(props) {
 
     const [enteredTitle, setEnteredTitle] = useState('');
-    const [enteredTime, setEnteredTime] = useState('00:00:00');
+    const [enteredTime, setEnteredTime] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
 
     const titleChangeHandler = (event) => {
@@ -24,8 +25,8 @@ function WorkoutForm(props) {
         // })
     };
 
-    const timeChangeHandler = (event) => {
-        setEnteredTime(event.target.value);
+    const timeChangeHandler = (time) => {
+        setEnteredTime(time);
     };
 
     const dateChangeHandler = (event) => {
@@ -70,7 +71,7 @@ function WorkoutForm(props) {
                         </div>
                         <div className="new-workout__control">
                             <label>시간</label>
-                            <input type="time" value={enteredTime} onChange={timeChangeHandler} />
+                            <TimePicker onTimeHandler={timeChangeHandler}/>
                         </div>
                         <div className="new-workout__actions">
                             <Button type="submit" className="new-workout__submit">추가</Button>
