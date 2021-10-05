@@ -18,6 +18,9 @@ UI 개발 완료
 - [ ] 운동기록 수정/삭제 기능
 - [ ] 친구와 같이 운동하기 기능
 
+# 화면구성
+![my_workout_images](https://user-images.githubusercontent.com/75877789/135954059-22f0104e-f306-4e51-b34f-1a3a0fcfc4bd.png)
+
 
 # Tech/Library
 **Frontend**
