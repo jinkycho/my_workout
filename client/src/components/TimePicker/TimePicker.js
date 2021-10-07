@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 function TimePicker(props) {
     
-    const [clickedHour, setClickedHour] = useState(0);
-    const [clickedMinutes, setClickedMinutes] = useState(0);
+    const [clickedHour, setClickedHour] = useState('');
+    const [clickedMinutes, setClickedMinutes] = useState('');
 
     const StyledTimePicker = styled.div`
         display: flex;
@@ -56,7 +56,8 @@ function TimePicker(props) {
         <StyledTimePicker>
             <div className="TimePicker__hour">
                 {[...Array(12)].map((v,hour) => 
-                    <button 
+                    <button
+                        key={hour}
                         onClick={() => hourClickHandler(hour)} 
                         className={clickedHour === hour ? 'clicked' : ''}>
                         {hour}시간
@@ -66,12 +67,12 @@ function TimePicker(props) {
             <div className="TimePicker__minute">
                 {[...Array(60)].map((v,minutes) => 
                     <button
+                        key={minutes}
                         onClick={() => minuteClickHandler(minutes)}
                         className={clickedMinutes === minutes ? 'clicked': ''}>
                         {minutes}분
                     </button>)}
             </div>
-            
         </StyledTimePicker>
     )
 }

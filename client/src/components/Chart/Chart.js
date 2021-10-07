@@ -4,7 +4,6 @@ import Card from '../UI/Card';
 import './Chart.css';
 
 function Chart(props) {
-    console.log(props.dataPoints)
     const dataPointValues = props.dataPoints.map(dataPoint => dataPoint.value);
     const totalMaximum = Math.max(...dataPointValues);
 

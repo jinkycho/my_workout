@@ -6,14 +6,14 @@ import styled from 'styled-components';
 function NewWorkout(props) {
     const [isOpen, setIsOpen] = useState(false);
     
-    const saveWorkoutDataHandler = (enteredWorkoutData) => {
-        const workoutData= {
-            ...enteredWorkoutData,
-            id: Math.random().toString()
-        };
+    const saveWorkoutDataHandler = (status) => {
+        // const workoutData= {
+        //     ...enteredWorkoutData,
+        //     id: Math.random().toString()
+        // };
         
-        props.onAddWorkout(workoutData);
-        setIsOpen(false);
+        // props.onAddWorkout(workoutData);
+        setIsOpen(status);
     };
 
     const StyledNewWork = styled.div`

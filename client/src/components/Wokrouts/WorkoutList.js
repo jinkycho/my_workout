@@ -1,10 +1,16 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import WorkoutItem from './WorkoutItem';
 import styled from 'styled-components';
 import Button from '../UI/Button';
 
-function WorkoutList(props) {
-    if(props.items.length === 0){
+function WorkoutList({workouts}) {
+
+    const renderedListItems = workouts.map(workout => {
+        return <WorkoutItem key={workout.id} workout={workout}/>
+    });
+
+    if(workouts.length === 0){
         return <h2 className="workout-list__fallback">운동기록이 없습니다.</h2>;
     }
 
@@ -16,10 +22,7 @@ function WorkoutList(props) {
 
     return (
         <StyledWorkoutList className="workout-list">
-            {props.items.map((expense) => (
-            <WorkoutItem item={expense} key={expense.id} />  
-            ))
-            }
+            {renderedListItems}
             {/* <Button>더보기 +</Button> */}
         </StyledWorkoutList>
     )

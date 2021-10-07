@@ -1,7 +1,6 @@
 import React from 'react'
 
-function WorkoutDate(props) {
-    const date = props.date;
+function WorkoutDate({date}) {
 
     const month = date.toLocaleString('en-US', {month: 'short'});
     const day = date.toLocaleString('en-US', { day: '2-digit'});

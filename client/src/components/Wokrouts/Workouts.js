@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import WorkoutList from './WorkoutList';
 import WorkoutFilter from './WorkoutFilter';
 import WorkoutChart from './WorkoutChart';
 import './Workouts.css'
+import store from '../../_store/store';
 
-function Workouts(props) {
-    const items = props.items;
+function Workouts() {
+    console.log('state', store.getState());
+    const workouts = useSelector(state => state.workouts.workout);
+    console.log('workouts', workouts);
 
     const [filteredYear, setFilteredYear] = useState('2021');
 
@@ -13,10 +17,19 @@ function Workouts(props) {
         setFilteredYear(selectedYear);
     }
 
-    const fiteredWorkout = items.filter(workout => {
+
+
+    const sortedByDate = (a,b) => {
+        let c = new Date(a.date);
+        let d = new Date(b.date);
+        return c > d ? -1 : 1;
+    };
+
+    console.log('sort by date', workouts.sort(sortedByDate));
+
+    const fiteredWorkout = workouts.filter(workout => {
         return workout.date.getFullYear().toString() === filteredYear;
     });
-
     
 
     return (
@@ -29,7 +42,7 @@ function Workouts(props) {
 
             <div className="workout-block__record">
                 <h3>운동기록</h3>
-                <WorkoutList items = {fiteredWorkout} />
+                <WorkoutList workouts={fiteredWorkout}/>
             </div>
         </div>
     )

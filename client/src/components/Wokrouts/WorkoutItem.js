@@ -4,11 +4,12 @@ import Card from '../UI/Card';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons'
+import { deleteWorkout } from '../../_actions/actions';
+import { useDispatch } from 'react-redux';
 
-function WorkoutItem(props) {
+function WorkoutItem({workout}) {
 
-    const item = props.item;
-
+    const dispatch = useDispatch();
 
     const StyledWorkoutItem = styled.li`
         background: #333;
@@ -70,7 +71,8 @@ function WorkoutItem(props) {
         }
     `;
 
-    const removeHandler = () => {
+    const deleteHandler = (workoutId) => {
+        dispatch(deleteWorkout(workoutId));
     }
 
     
@@ -79,14 +81,14 @@ function WorkoutItem(props) {
             <Card>
                 <div className="workout-item">
                     <div className="workout-item__date">
-                        <WorkoutDate date={item.date}/>
+                        <WorkoutDate date={workout.date}/>
                     </div>
                     <div className="workout-item__detail">
-                        <h2>{item.title}</h2>
-                        <div>{item.time}</div>
+                        <h2>{workout.title}</h2>
+                        <div>{workout.time}</div>
                     </div>
                     <div className="workout-item__buttons">
-                        {/* <button onClick={removeHandler}><FontAwesomeIcon icon={faTrashAlt} className="workout-item__icon"/></button> */}
+                        <button onClick={() => {deleteHandler(workout.id)}}><FontAwesomeIcon icon={faTrashAlt} className="workout-item__icon"/></button>
                         {/* <button><FontAwesomeIcon icon={faEdit} className="workout-item__icon"/></button> */}
                     </div>
                 </div>

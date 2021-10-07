@@ -3,12 +3,17 @@ import Button from '../UI/Button';
 import Card from '../UI/Card';
 import './WorkoutForm.css';
 import TimePicker from '../TimePicker/TimePicker';
+import { useDispatch, useSelector } from 'react-redux';
+import { addWorkout } from '../../_actions/actions';
+import store from '../../_store/store';
 
 function WorkoutForm(props) {
 
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredTime, setEnteredTime] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
+    const dispatch = useDispatch();
+    const workouts = useSelector(state => state.workouts.workout);
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -33,19 +38,33 @@ function WorkoutForm(props) {
         setEnteredDate(event.target.value);
     };
 
+
     const submitHandler = (event) => {
         event.preventDefault();
 
+        //새로운 아이디 생성하기
+        const workoutId = workouts.map(workout => workout.id);
+        const createdWorkoutId = Math.max(...workoutId) + 1;
+
+        if(!enteredTitle || !enteredTime || !enteredDate){
+            alert('모든 항목을 입력하셔야 합니다.');
+            return;
+        }
         const workoutData = {
+            id : createdWorkoutId,
             title: enteredTitle,
             time: enteredTime,
             date: new Date(enteredDate)
         };
 
+        //store에 저장할 데이터 dispatch
+        dispatch(addWorkout(workoutData));
+
         //child -> parent props 전달
         //Lifting State Up
-        props.onSaveWorkoutData(workoutData);
+        props.onSaveWorkoutData(false);
 
+        //입력된 데이터 초기화
         setEnteredTitle('');
         setEnteredTime('');
         setEnteredDate('');
