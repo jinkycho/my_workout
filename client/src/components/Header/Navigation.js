@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 function Navigation() {
 
@@ -15,21 +16,28 @@ function Navigation() {
         }
 
         & .menu{
-            width: 100%auto;
+            width: 100%;
             margin-bottom: 2rem;
             border-bottom: 1px solid #ddd;
+            display: flex;
         }
 
-        & .menu__record{
-            width: 20%;
-            padding-bottom: 0.5rem;
+        & .menu a{
+            display: block;
+            text-decoration: none;
+            color: #ddd;
+            padding: 1rem 1rem 0.5rem;
+            position: relative;
+        }
+
+        & .menu a:focus{
+            font-weight: bold;
             color: #333;
             font-weight: bold;
-            position: relative;
             text-align: center;
         }
 
-        & .menu__record::after{
+        & .menu a:focus::after{
             content: '';
             display: block;
             width: 100%;
@@ -37,6 +45,7 @@ function Navigation() {
             background: #333;
             position: absolute;
             bottom: 0;
+            left: 0;
         }
 
     `;
@@ -66,7 +75,8 @@ function Navigation() {
                     </div>
                 </div>
                 <div className="menu">
-                    <div className="menu__record">기록</div>
+                    <div className="menu__record"><Link to="/">기록</Link></div>
+                    <div className="menu__video"><Link to="/videos">운동영상</Link></div>
                 </div>
             </StyeldNavigation>
         </div>
