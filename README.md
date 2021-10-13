@@ -32,6 +32,8 @@ UI 개발 완료
 - CSS
 - Javascript
 - React
+- Redux
+- styled-component
 ```
 
 # 데모사이트
