@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -22,6 +22,12 @@ function Navigation() {
             display: flex;
         }
 
+        & .menu button{
+            border: none;
+            background: #fff;
+            font-size: 1rem;
+        }
+
         & .menu a{
             display: block;
             text-decoration: none;
@@ -30,14 +36,14 @@ function Navigation() {
             position: relative;
         }
 
-        & .menu a:focus{
+        & .menu button.active a{
             font-weight: bold;
             color: #333;
             font-weight: bold;
             text-align: center;
         }
 
-        & .menu a:focus::after{
+        & .menu button.active a::after{
             content: '';
             display: block;
             width: 100%;
@@ -63,6 +69,21 @@ function Navigation() {
         cursor: pointer;
         margin: auto;
     `;
+
+    const [recordActive, setRecordActive] = useState(true);
+    const [videoActive, setVideoActive] = useState(false);
+
+    const isActive = (active) => {
+        if(active === 'record'){
+            setRecordActive(true);
+            setVideoActive(false);
+        }
+
+        if(active === 'video'){
+            setVideoActive(true);
+            setRecordActive(false);
+        }
+    }
     return (
         <div>
             <StyeldNavigation className="navigation">
@@ -75,8 +96,8 @@ function Navigation() {
                     </div>
                 </div>
                 <div className="menu">
-                    <div className="menu__record"><Link to="/">기록</Link></div>
-                    <div className="menu__video"><Link to="/videos">운동영상</Link></div>
+                    <button className={recordActive? 'active': ''} onClick={() => isActive('record')}><Link to="/">기록</Link></button>
+                    <button className={videoActive? 'active': ''} onClick={() => isActive('video')}><Link to="/videos">운동영상</Link></button>
                 </div>
             </StyeldNavigation>
         </div>
