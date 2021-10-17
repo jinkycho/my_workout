@@ -21,7 +21,7 @@ UI 개발 완료
 - [X] 운동기록 삭제 기능
 
 # 화면구성
-![my_workout_images](https://user-images.githubusercontent.com/75877789/135954059-22f0104e-f306-4e51-b34f-1a3a0fcfc4bd.png)
+![스크린샷 2021-10-17 오후 10 43 21](https://user-images.githubusercontent.com/75877789/137629899-6516728e-8754-4c55-8be3-f1183acf42e8.png)
 
 
 # Tech/Library
