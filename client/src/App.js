@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Workouts from './components/Workouts/Workouts';
 import NewWorkout from './components/NewWorkout/NewWorkout';
@@ -19,6 +19,8 @@ function App() {
   const deleteWorkoutHandler = id =>{
     setWorkouts(workouts.filter(workout => workout.id !== id));
   }
+
+
   
   return (
 
@@ -30,7 +32,7 @@ function App() {
             <NewWorkout onAddWorkout={addWorkoutHandler}/>
             <Workouts items={workouts} onDeleteWorkout={deleteWorkoutHandler}/>
           </Route>
-          <Route path="/videos">
+          <Route path="/:videos">
             <Videos />
           </Route>
       </Switch>

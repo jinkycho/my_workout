@@ -27,7 +27,7 @@ export default function filterReducer(state = initialState, action){
                     return{
                         ...state,
                         filter : state.filter.filter(
-                            (exisitingFilter) => exisitingFilter != filter
+                            (exisitingFilter) => exisitingFilter !== filter
                         )
                     }
                 }

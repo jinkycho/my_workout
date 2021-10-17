@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { set } from 'mongoose';
 
-function Navigation() {
+
+function Navigation(match) {
 
     const StyeldNavigation = styled.nav`
         & .member{
-          display: flex;
-          justify-content: space-between ;
-          margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between ;
+            margin-bottom: 2rem;
         }
 
         & .member__message{
@@ -26,6 +28,7 @@ function Navigation() {
             border: none;
             background: #fff;
             font-size: 1rem;
+            padding: 0;
         }
 
         & .menu a{
@@ -73,6 +76,15 @@ function Navigation() {
     const [recordActive, setRecordActive] = useState(true);
     const [videoActive, setVideoActive] = useState(false);
 
+    let params = useHistory();
+    
+    useEffect(() => {
+        if(params.location.pathname==="/videos"){
+            setVideoActive(true);
+            setRecordActive(false);
+        }
+    }, []);
+    
     const isActive = (active) => {
         if(active === 'record'){
             setRecordActive(true);
