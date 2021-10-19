@@ -26,7 +26,6 @@ UI 개발 완료
 
 # Tech/Library
 **Frontend**
-
 ```
 - HTML
 - CSS
@@ -35,6 +34,18 @@ UI 개발 완료
 - Redux
 - Redux-saga
 - styled-component
+```
+
+**Deployment**
+
+```
+firebase
+```
+
+**API**
+
+```
+Youtube API
 ```
 
 # 데모사이트
