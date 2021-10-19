@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 export const GET_VEDIOS = "GET_VIDEOS";
 const SET_VIDEOS = "SET_VIDEOS";
 
@@ -20,11 +22,18 @@ export default function videosReducer(state = initialState, action){
         case SET_VIDEOS:
             return{
                 ...state, 
-                videoList : action.payload
+                videoList : [...state.videoList, action.payload]
             }
         default: {
             return state;
         }
     }
 }
+
+const videosInState = (state) => state.videos.videoList;
+
+export const videosSelector = createSelector(
+    videosInState,
+    videos => videos
+)
 

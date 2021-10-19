@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components';
 
 function TimePicker(props) {
@@ -11,16 +11,28 @@ function TimePicker(props) {
         height: 100px;
         margin: 1rem 0;
 
+        & .TimePicker__time{
+            align-self: center;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
         & .TimePicker__hour,
         & .TimePicker__minute{
             display: flex;
             flex-direction: column;
             overflow-y: scroll;
+            list-style: none;
+            --ms-overflow-style: none;
+            position: relative;
         }
 
-        & .TimePicker__hour,
-        & .TimePicker__minute::-webkit-scrollbar-thumb{
-            
+        & .TimePicker__hour::-webkit-scrollbar,
+        & .TimePicker__minute::-webkit-scrollbar{
+            display: none;
+        }
+
+        & .TimePicker__hour > li{
         }
 
         & button{
@@ -38,41 +50,68 @@ function TimePicker(props) {
         }
     `;
 
-    const hourClickHandler = (hour) => {
+    const hourEl = useRef(null);
+
+
+    const hourClickHandler = (hour, e) => {
+        e.preventDefault();
         setClickedHour(hour);
     }
 
-    const minuteClickHandler = (minutes) =>{
+    const minuteClickHandler = (minutes, e) =>{
+        e.preventDefault();
+
+        if(clickedHour === ''){
+            alert('운동 시간을 먼저 선택해주세요.');
+            return;
+        }
+
+        if(clickedHour === 0 && minutes === 0){
+            alert('운동 시간은 0시간 0분이 될 수 없습니다.');
+            return;
+        }
+
+
         setClickedMinutes(minutes);
 
-        if(clickedHour !== ''){
-            let settingHour = clickedHour < 10 ? '0' + clickedHour : clickedHour;
-            let settingMinutes = minutes < 10 ? '0' + minutes : minutes;
-            props.onTimeHandler(settingHour + ':' + settingMinutes);
+        let settingHour = clickedHour < 10 ? '0' + clickedHour : clickedHour;
+        let settingMinutes = minutes < 10 ? '0' + minutes : minutes;
+
+        if(settingHour && settingMinutes){
+            props.onTimeHandler(settingHour + ':' + settingMinutes);  
         }
     } 
 
     return (
         <StyledTimePicker>
-            <div className="TimePicker__hour">
-                {[...Array(12)].map((v,hour) => 
-                    <button
-                        key={hour}
-                        onClick={() => hourClickHandler(hour)} 
-                        className={clickedHour === hour ? 'clicked' : ''}>
-                        {hour}시간
-                    </button>)}
-            </div>
+            <p className="TimePicker__time">
+                {clickedHour}시간 {clickedMinutes}분
+            </p>
+
+            <ul className="TimePicker__hour">
+                {[...Array(12)].map((v,hour) =>
+                    <li key={hour}>
+                        <button
+                            onClick={(e) => hourClickHandler(hour, e)} 
+                            className={clickedHour === hour ? 'clicked' : ''}
+                            ref={hourEl}>
+                            {hour}시간
+                        </button>
+                    </li>
+                )}    
+            </ul>
             
-            <div className="TimePicker__minute">
+            <ul className="TimePicker__minute">
                 {[...Array(60)].map((v,minutes) => 
-                    <button
-                        key={minutes}
-                        onClick={() => minuteClickHandler(minutes)}
-                        className={clickedMinutes === minutes ? 'clicked': ''}>
-                        {minutes}분
-                    </button>)}
-            </div>
+                    <li key={minutes}>
+                        <button
+                            onClick={(e) => minuteClickHandler(minutes, e)}
+                            className={clickedMinutes === minutes ? 'clicked': ''}>
+                            {minutes}분
+                        </button>
+                    </li> 
+                )}
+            </ul>
         </StyledTimePicker>
     )
 }

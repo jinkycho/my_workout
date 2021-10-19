@@ -4,8 +4,10 @@ import Workouts from './components/Workouts/Workouts';
 import NewWorkout from './components/NewWorkout/NewWorkout';
 import Videos from './components/Videos/Videos';
 import './App.css'
-import Navigation from './components/Header/Navigation';
+import Navigation from './components/Navigation/Navigation';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { getVideos } from './_reducers/videoSlice';
 
 function App() {
   const [workouts, setWorkouts] = useState();
@@ -19,6 +21,15 @@ function App() {
   const deleteWorkoutHandler = id =>{
     setWorkouts(workouts.filter(workout => workout.id !== id));
   }
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //dispatch(getVideos('상체'));
+    //dispatch(getVideos('하체'));
+    //dispatch(getVideos('복근'));
+    //dispatch(getVideos('힙'));
+  }, [])
 
 
   

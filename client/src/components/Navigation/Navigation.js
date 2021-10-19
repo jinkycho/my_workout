@@ -35,7 +35,7 @@ function Navigation(match) {
             display: block;
             text-decoration: none;
             color: #ddd;
-            padding: 1rem 1rem 0.5rem;
+            padding: 1rem 1.5rem 0.5rem;
             position: relative;
         }
 
@@ -50,10 +50,10 @@ function Navigation(match) {
             content: '';
             display: block;
             width: 100%;
-            height: 2px;
+            height: 3px;
             background: #333;
             position: absolute;
-            bottom: 0;
+            bottom: -2px;
             left: 0;
         }
 

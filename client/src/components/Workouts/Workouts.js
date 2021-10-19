@@ -7,16 +7,13 @@ import './Workouts.css'
 import store from '../../_store/store';
 
 function Workouts() {
-    console.log('state', store.getState());
     const workouts = useSelector(state => state.workouts.workout);
-    console.log('workouts', workouts);
 
     const [filteredYear, setFilteredYear] = useState('2021');
 
     const filterChangeHanlder = selectedYear => {
         setFilteredYear(selectedYear);
     }
-
 
 
     const sortedByDate = (a,b) => {

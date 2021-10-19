@@ -89,7 +89,7 @@ function WorkoutForm(props) {
                             <input type="text" value={enteredTitle} onChange={titleChangeHandler} />                  
                         </div>
                         <div className="new-workout__control">
-                            <label>시간</label>
+                            <label>운동시간</label>
                             <TimePicker onTimeHandler={timeChangeHandler}/>
                         </div>
                         <div className="new-workout__actions">

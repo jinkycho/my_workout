@@ -17,8 +17,6 @@ function WorkoutChart(props) {
         {label: 'Dec', value : 0},
     ];
 
-    console.log(props);
-
     for(const workout of props.workout){
         const workoutTime = workout.time;
 

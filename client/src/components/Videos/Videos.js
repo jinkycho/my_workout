@@ -5,12 +5,14 @@ import Youtube from 'react-youtube';
 import { useSelector } from 'react-redux'; 
 import { videoFilters } from '../../_reducers/filterSlice';
 import { useDispatch } from 'react-redux';
-import { getVideos } from '../../_reducers/videoSlice';
+import { getVideos, videosSelector } from '../../_reducers/videoSlice';
 
 function Videos() {
     const [keyword, setKeyword] = useState('');
 
-    const videos = useSelector(state => state.videos.videoList);
+    //const videos = useSelector(state => state.videos.videoList);
+    const videos = useSelector(videosSelector);
+    console.log(videos);
 
     // useEffect(() => {
     //     async function fetchData(){
@@ -83,7 +85,10 @@ function Videos() {
     const dispatch = useDispatch();
 
     const loadVideos = (item) => {
-        dispatch(getVideos(item));
+        if(item === keyword){
+            return;
+        }
+        //dispatch(getVideos(item));
         setKeyword(item);
     }
 
@@ -107,7 +112,7 @@ function Videos() {
 
     return (
         <StyledVideopage>
-            <h5>운동부위 선택</h5>
+            <h5>관심운동 선택</h5>
             <div className="video__filter">
                 {renderFilters}
             </div>
