@@ -51,11 +51,10 @@ Youtube API
 # 데모사이트
 [데모사이트 보러가기](https://workout-tracker-7206b.web.app/)
 
-# 설치
+# 개발과정
+[개발과정 보러가기](https://jinkycho.notion.site/33d468443a3f4b22bf1080ce51c12e2e?v=2bb95bc4a552488f953fe209d7bc3c10)
 
-```
-npm install
-```
+
 
 
 
