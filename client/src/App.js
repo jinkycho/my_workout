@@ -25,11 +25,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //dispatch(getVideos('상체'));
-    //dispatch(getVideos('하체'));
-    //dispatch(getVideos('복근'));
-    //dispatch(getVideos('힙'));
-  }, [])
+    dispatch(getVideos('상체+하체+복근+힙'));
+  }, []);
 
 
   

@@ -19,11 +19,13 @@ const initialState= {
 
 export default function videosReducer(state = initialState, action){
     switch(action.type){
-        case SET_VIDEOS:
+        case SET_VIDEOS:{
+            const videoData = action.payload;
             return{
-                ...state, 
-                videoList : [...state.videoList, action.payload]
+                ...state,
+                videoList : videoData
             }
+        }
         default: {
             return state;
         }
@@ -32,8 +34,12 @@ export default function videosReducer(state = initialState, action){
 
 const videosInState = (state) => state.videos.videoList;
 
+export const loadVideos = createSelector(videosInState, (video) =>
+    Object.values(video)
+)
+
 export const videosSelector = createSelector(
-    videosInState,
+    loadVideos,
     videos => videos
 )
 

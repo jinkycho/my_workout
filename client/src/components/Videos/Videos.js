@@ -12,7 +12,7 @@ function Videos() {
 
     //const videos = useSelector(state => state.videos.videoList);
     const videos = useSelector(videosSelector);
-    console.log(videos);
+    console.log('videos', videos);
 
     // useEffect(() => {
     //     async function fetchData(){
@@ -117,7 +117,7 @@ function Videos() {
                 {renderFilters}
             </div>
             <div className="video__items">
-                {renderVideos}
+                
             </div>
         </StyledVideopage>
     )
